@@ -6,6 +6,12 @@ import java.util.List;
 public class ArrayAsListTestMain {
 
 	public static void main(String[] args) {
+		String[] arrStr = new String[] { "홍길동", "신용관", "김자바" };
+		System.out.println(">>> " + Arrays.toString(arrStr));
+		for (String str : arrStr) {
+			System.out.println(">> " + str);
+		}
+		
 		List<String> list1 = Arrays.asList("홍길동", "신용관", "김자바");
 		for (String name : list1) {
 			System.out.println(">>> " + name);
