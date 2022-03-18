@@ -7,9 +7,15 @@ import java.util.Properties;
 
 public class PropertiesTestMain {
 
+	public PropertiesTestMain() {
+		String path = this.getClass().getResource("database.properties").getPath();
+		System.out.println(">>> path: " + path);
+	}
+	
 	public static void main(String[] args) throws Exception {
 		Properties properties = new Properties();
 		String path = PropertiesTestMain.class.getResource("database.properties").getPath();
+		System.out.println(">>> path: " + path);
 		path = URLDecoder.decode(path, "utf-8");
 		properties.load(new FileReader(path));
 		
@@ -30,5 +36,7 @@ public class PropertiesTestMain {
 			String val = String.valueOf(entry.getValue());
 			System.out.printf(">>> %s = %s\n", key, val);
 		}
+		
+		new PropertiesTestMain();
 	}
 }
