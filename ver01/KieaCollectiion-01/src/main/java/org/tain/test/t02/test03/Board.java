@@ -1,4 +1,4 @@
-package org.tain.test.t01.sample03;
+package org.tain.test.t02.test03;
 
 public class Board {
 

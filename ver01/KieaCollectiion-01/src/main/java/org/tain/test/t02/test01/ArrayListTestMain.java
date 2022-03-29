@@ -3,6 +3,7 @@ package org.tain.test.t02.test01;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -13,6 +14,7 @@ public class ArrayListTestMain {
 		test01();
 		test02();
 		test03();
+		test04();
 	}
 	
 	private static void test01() {
@@ -48,13 +50,13 @@ public class ArrayListTestMain {
 	}
 	
 	private static void test02() {
-		List<String> list = Arrays.asList(
+		List<String> list = new ArrayList<>(Arrays.asList(
 			"Java",
 			"JDBC",
 			"Servlet/JSP",
 			"iBatis"
-		);
-		//list.add(2, "Database");
+		));
+		list.add(2, "Database");
 		
 		System.out.println(">>> list.size(): " + list.size());
 		System.out.println();
@@ -67,26 +69,50 @@ public class ArrayListTestMain {
 		stream.forEach((e) -> {System.out.println(">> " + e);});
 		System.out.println();
 		
-		//list.remove(2);
-		//list.remove(2);
-		//list.remove("iBatis");
+		list.remove(2);
+		list.remove(2);
+		list.remove("iBatis");
 		
 		list.stream().forEach((e) -> { System.out.println(">>>>" + e); });
 		System.out.println();
 	}
 	
 	private static void test03() {
-		List<String> list = Arrays.asList(
-				"Java",
-				"JDBC",
-				"Servlet/JSP",
-				"iBatis"
-			);
+		List<String> list = Arrays.asList(new String[] {
+			"Java",
+			"JDBC",
+			"Servlet/JSP",
+			"iBatis"
+		});
 		
 		list.stream().forEach(e -> System.out.println(">>> " + e));
 		System.out.println();
 		
 		IntStream.range(0, list.size())
 			.forEach(index -> System.out.printf(">>>> (%d) %s\n", index, list.get(index)));
+		
+		String[] arr = list.toArray(new String[list.size()]);
+		for (String str : arr) {
+			System.out.println("--> " + str);
+		}
+		System.out.println();
+	}
+	
+	private static void test04() {
+		String[] arr = {
+			"Java",
+			"JDBC",
+			"Servlet/JSP",
+			"iBatis"
+		};
+		
+		List<String> list = Stream.of(arr).collect(Collectors.toList());
+		list.add(2, "Database");
+		list.remove(2);
+		list.remove(2);
+		list.remove("iBatis");
+		
+		list.stream().forEach(System.out::println);
+		System.out.println();
 	}
 }
