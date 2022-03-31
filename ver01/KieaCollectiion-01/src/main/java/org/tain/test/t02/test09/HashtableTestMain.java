@@ -1,4 +1,4 @@
-package org.tain.test.t01.sample09;
+package org.tain.test.t02.test09;
 
 import java.util.Hashtable;
 import java.util.Map;
@@ -6,10 +6,8 @@ import java.util.Scanner;
 
 public class HashtableTestMain {
 
-	// thread safe
-	
 	public static void main(String[] args) {
-		Map<String, String> map = new Hashtable<>();
+		Map<String,String> map = new Hashtable<>();
 		
 		map.put("spring", "12");
 		map.put("summer", "123");
@@ -26,7 +24,6 @@ public class HashtableTestMain {
 			
 			System.out.print("비밀번호: ");
 			String password = scanner.nextLine();
-			
 			System.out.println();
 			
 			if (map.containsKey(id)) {
@@ -40,6 +37,7 @@ public class HashtableTestMain {
 				System.out.println("입력하신 아이디가 존재하지 않습니다.");
 			}
 		}
+		
 		scanner.close();
 	}
 }

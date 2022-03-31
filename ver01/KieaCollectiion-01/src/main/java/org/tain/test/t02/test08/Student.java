@@ -1,4 +1,4 @@
-package org.tain.test.t01.sample08;
+package org.tain.test.t02.test08;
 
 public class Student {
 
@@ -10,17 +10,16 @@ public class Student {
 		this.name = name;
 	}
 	
-	public int getSno( ) { return this.sno; }
+	public int getSno() { return this.sno; }
 	public String getName() { return this.name; }
 	
 	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof Student) {
 			Student student = (Student) obj;
-			return (this.sno == student.getSno()) && (this.name.equals(student.getName()));
-		} else {
-			return false;
+			return student.sno == this.sno && student.getName().equals(this.name);
 		}
+		return false;
 	}
 	
 	@Override
@@ -29,6 +28,6 @@ public class Student {
 	}
 	
 	public String toString() {
-		return String.format("[%d:%s]", this.sno, this.name);
+		return String.format("[Student:%d,%s]", this.sno, this.name);
 	}
 }
